@@ -1,0 +1,10 @@
+# AI Integration Reflection
+
+## Where AI was most useful
+AI was most useful in spotting a bug I wouldn't have otherwise thought to look for - entry #7. In this instance, all the columns for my Household table were blank even though the data was loading into the application. I was using PropertyValueFactory("fullName") the same way that numerous Java tutorial examples show. The AI indicated that PropertyValueFactory was actually looking for a getFullName() method which case classes do not feature so it just silently fails instead of throwing an error. The fix for this error applied to all tables in the application (Households, Subsidies, Applications).
+
+## Where AI misled me or produced wrong Scala/ScalaFX
+Entry #4 is perhaps the clearest example of where AI produced wrong scala. AI created an initial version of the build.sbt file (entry #1) which indicated that the application should compile just fine, yet would crash when attempted to be started. The error message indicated that AI's first attempt failed to include a required dependency for the Derby database system (derbytools) which was included starting with version 10.15 of that database system. This was only discovered by actually attempting to run the application. Similarly, entry #11 also contained a similar issue in that the JavaFX dependencies were specified in the build.sbt file but without the proper classifier for the operating system which caused the same type of error on startup.
+
+## What I did that AI could not have done for me
+AI can fix errors that I  show it, but it can’t make decisions for me about what my application is supposed to do. For example, it would have helped me with the status of the applications had I made the decision myself that it should be a sealed trait with three values instead of a String (entry #5). It can’t run my program to find errors, such as the fact that the Reject button had forgotten to give the subsidy quota back to the government (entry #10). Only by playing with my application can I find these kinds of errors.

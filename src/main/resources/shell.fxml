@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.layout.BorderPane?>
+
+<!--
+  Shell view — the four-way navigation shell for the Subsidy Eligibility Calculator.
+  Each tab's content is a separate FXML file with its own controller (one FXML + one
+  controller per tab, per the project's MVC rule). ShellController receives references
+  to the four included controllers automatically via the fx:id + "Controller" naming
+  convention, so it can ask sibling tabs to refresh after a mutation.
+-->
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="controller.ShellController">
+    <top>
+        <MenuBar>
+            <menus>
+                <Menu text="File">
+                    <items>
+                        <MenuItem fx:id="closeMenuItem" text="Close" onAction="#handleClose"/>
+                    </items>
+                </Menu>
+                <Menu text="Help">
+                    <items>
+                        <MenuItem fx:id="aboutMenuItem" text="About" onAction="#handleAbout"/>
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+    </top>
+    <center>
+        <TabPane fx:id="navigationTabPane" tabClosingPolicy="UNAVAILABLE">
+            <tabs>
+                <Tab text="Households" closable="false">
+                    <content>
+                        <fx:include fx:id="households" source="households.fxml"/>
+                    </content>
+                </Tab>
+                <Tab text="Subsidies" closable="false">
+                    <content>
+                        <fx:include fx:id="subsidies" source="subsidies.fxml"/>
+                    </content>
+                </Tab>
+                <Tab text="Applications" closable="false">
+                    <content>
+                        <fx:include fx:id="applications" source="applications.fxml"/>
+                    </content>
+                </Tab>
+                <Tab text="Dashboard" closable="false">
+                    <content>
+                        <fx:include fx:id="dashboard" source="dashboard.fxml"/>
+                    </content>
+                </Tab>
+            </tabs>
+        </TabPane>
+    </center>
+</BorderPane>

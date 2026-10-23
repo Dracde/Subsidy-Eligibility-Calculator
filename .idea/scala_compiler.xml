@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ScalaCompilerConfiguration">
+    <option name="separateProdTestSources" value="true" />
+    <profile name="sbt 1" modules="SubsidyEligibilityCalculator,project_sample_9240,project_sample_9240.main,project_sample_9240.test" />
+    <profile name="sbt 2" modules="SubsidyEligibilityCalculator.main,SubsidyEligibilityCalculator.main~1,SubsidyEligibilityCalculator.test,SubsidyEligibilityCalculator.test~1">
+      <option name="deprecationWarnings" value="true" />
+      <option name="featureWarnings" value="true" />
+      <parameters>
+        <parameter value="-Wunused:all" />
+        <parameter value="-Wconf:msg=unset private variable:s" />
+        <parameter value="-Wconf:msg=method handle in trait EventIncludes:s" />
+        <parameter value="-Wconf:msg=unused import:s" />
+      </parameters>
+    </profile>
+  </component>
+</project>

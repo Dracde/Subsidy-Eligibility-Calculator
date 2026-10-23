@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="controller.HouseholdsController" spacing="12" style="-fx-background-color: #f4f6f8;">
+    <padding>
+        <Insets top="16" right="16" bottom="16" left="16"/>
+    </padding>
+    <children>
+        <Label text="Household Registration" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #1b3a57;"/>
+        <Label text="Register, update, delete, and search households applying for subsidies."
+               style="-fx-font-size: 13px; -fx-text-fill: #4a4a4a;"/>
+
+        <GridPane hgap="8" vgap="8">
+            <columnConstraints>
+                <ColumnConstraints minWidth="150"/>
+                <ColumnConstraints minWidth="220"/>
+            </columnConstraints>
+            <children>
+                <Label text="Full name:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                <TextField fx:id="fullNameField" promptText="e.g. Nurul Aisyah binti Hassan"
+                           GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+
+                <Label text="IC number:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                <TextField fx:id="icNumberField" promptText="e.g. 900101-10-1234"
+                           GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+                <Label text="Monthly income (RM):" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                <TextField fx:id="monthlyIncomeField" promptText="e.g. 1800.00"
+                           GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+
+                <Label text="Number of dependents:" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+                <TextField fx:id="dependentsField" promptText="e.g. 3" onAction="#handleAdd"
+                           GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+            </children>
+        </GridPane>
+
+        <HBox spacing="8">
+            <children>
+                <Button fx:id="addButton" text="Add Household" defaultButton="true" onAction="#handleAdd"/>
+                <Button fx:id="updateButton" text="Update Selected" onAction="#handleUpdate"/>
+                <Button fx:id="deleteButton" text="Delete Selected" onAction="#handleDelete"/>
+                <Button fx:id="clearButton" text="Clear Form" onAction="#handleClear"/>
+            </children>
+        </HBox>
+
+        <Label fx:id="statusLabel" text="" style="-fx-text-fill: #2f6fb0;"/>
+
+        <HBox spacing="8">
+            <children>
+                <Label text="Search:"/>
+                <TextField fx:id="searchField" promptText="Search by name or IC number..." HBox.hgrow="ALWAYS"/>
+            </children>
+        </HBox>
+
+        <TableView fx:id="householdTableView" VBox.vgrow="ALWAYS">
+            <columns>
+                <TableColumn fx:id="idColumn" text="ID" prefWidth="50"/>
+                <TableColumn fx:id="nameColumn" text="Full Name" prefWidth="200"/>
+                <TableColumn fx:id="icColumn" text="IC Number" prefWidth="140"/>
+                <TableColumn fx:id="incomeColumn" text="Monthly Income (RM)" prefWidth="150"/>
+                <TableColumn fx:id="dependentsColumn" text="Dependents" prefWidth="100"/>
+            </columns>
+        </TableView>
+    </children>
+</VBox>
